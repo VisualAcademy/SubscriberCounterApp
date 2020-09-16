@@ -1,6 +1,6 @@
 ﻿//console.log("구독자 수 관리 앱");
 //[1] HTML 페이지의 특정 div 태그에 HTML 출력
-export class HtmlResponse {
+/*export */class HtmlResponse {
     private constructor() {
         // Empty
     }
@@ -10,9 +10,9 @@ export class HtmlResponse {
     }
 }
 //[2] 구독자 수 관리에 필요한 기능
-export class SubscriberCounter {
+/*export */class SubscriberCounter {
     // 필드
-    private _count = 0; 
+    private _count = 7000; 
     // 생성자
     constructor(public title: string) {
     }
@@ -33,6 +33,20 @@ export class SubscriberCounter {
 }
 //[!] 실행
 class Root {
-
+    private title: string = "Youtube";
+    subscriberCounter: SubscriberCounter;
+    constructor() {
+        this.subscriberCounter = new SubscriberCounter(this.title);
+        this.rederCounter(); 
+    }
+    rederCounter() {
+        const html = `
+<h2>${this.title} 구독자 카운트</h2>
+<span>채널 이름: </span> ${this.subscriberCounter.title}<br /> 
+<span>구독자 수: </span> ${this.subscriberCounter.count}<br /> 
+`;
+        HtmlResponse.write(html);
+    }
 }
-const root = new Root();
+HtmlResponse.divHtml = document.querySelector("#divHtml");
+const root = new Root(); // 자바스크립트 코드 실행
