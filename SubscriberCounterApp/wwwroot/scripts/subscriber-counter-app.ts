@@ -28,7 +28,10 @@
         this._count += cnt; 
     }
     decrement(cnt: number) {
-        this._count -= cnt; 
+        this._count -= cnt;
+    }
+    update(cnt: number) {
+        this._count = cnt;
     }
 }
 //[!] 실행
@@ -43,10 +46,30 @@ class Root {
         const html = `
 <h2>${this.title} 구독자 카운트</h2>
 <span>채널 이름: </span> ${this.subscriberCounter.title}<br /> 
-<span>구독자 수: </span> ${this.subscriberCounter.count}<br /> 
+<span>구독자 수: </span> ${this.subscriberCounter.count}<hr /> 
+변경 값: <input type="text" id="txtAmount" value="0"> 
+<button onclick="window.root.changeCounter(+1)">증가</button>
+<button onclick="window.root.changeCounter(-1)">감소</button>
+<button onclick="window.root.changeCounter(0)">수정</button>
 `;
         HtmlResponse.write(html);
     }
+    changeCounter(changeType: ChangeType) {
+        let txtAmount: HTMLInputElement = document.querySelector("#txtAmount");
+        let amount = +txtAmount.value;
+        if (changeType == ChangeType.Increment) {
+            this.subscriberCounter.increment(amount); 
+        }
+        else if (changeType == ChangeType.Decrement) {
+            this.subscriberCounter.decrement(amount); 
+        }
+        else {
+            this.subscriberCounter.update(amount); 
+        }
+        this.rederCounter(); 
+    }
 }
+enum ChangeType { Increment = 1, Update = 0, Decrement = -1 }
 HtmlResponse.divHtml = document.querySelector("#divHtml");
 const root = new Root(); // 자바스크립트 코드 실행
+(<any>window).root = root; 
