@@ -40,9 +40,9 @@ class Root {
     subscriberCounter: SubscriberCounter;
     constructor() {
         this.subscriberCounter = new SubscriberCounter(this.title);
-        this.rederCounter(); 
+        this.renderCounter(); 
     }
-    rederCounter() {
+    renderCounter() {
         const html = `
 <h2>${this.title} 구독자 카운트</h2>
 <span>채널 이름: </span> ${this.subscriberCounter.title}<br /> 
@@ -66,7 +66,7 @@ class Root {
         else {
             this.subscriberCounter.update(amount); 
         }
-        this.rederCounter(); 
+        this.renderCounter(); 
     }
 }
 enum ChangeType { Increment = 1, Update = 0, Decrement = -1 }

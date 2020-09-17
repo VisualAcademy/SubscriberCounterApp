@@ -45,9 +45,9 @@ var Root = /** @class */ (function () {
     function Root() {
         this.title = "Youtube";
         this.subscriberCounter = new SubscriberCounter(this.title);
-        this.rederCounter();
+        this.renderCounter();
     }
-    Root.prototype.rederCounter = function () {
+    Root.prototype.renderCounter = function () {
         var html = "\n<h2>" + this.title + " \uAD6C\uB3C5\uC790 \uCE74\uC6B4\uD2B8</h2>\n<span>\uCC44\uB110 \uC774\uB984: </span> " + this.subscriberCounter.title + "<br /> \n<span>\uAD6C\uB3C5\uC790 \uC218: </span> " + this.subscriberCounter.count + "<hr /> \n\uBCC0\uACBD \uAC12: <input type=\"text\" id=\"txtAmount\" value=\"0\"> \n<button onclick=\"window.root.changeCounter(+1)\">\uC99D\uAC00</button>\n<button onclick=\"window.root.changeCounter(-1)\">\uAC10\uC18C</button>\n<button onclick=\"window.root.changeCounter(0)\">\uC218\uC815</button>\n";
         HtmlResponse.write(html);
     };
@@ -63,7 +63,7 @@ var Root = /** @class */ (function () {
         else {
             this.subscriberCounter.update(amount);
         }
-        this.rederCounter();
+        this.renderCounter();
     };
     return Root;
 }());
