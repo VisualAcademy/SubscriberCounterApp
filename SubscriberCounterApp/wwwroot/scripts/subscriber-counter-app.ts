@@ -1,39 +1,13 @@
 ﻿//console.log("구독자 수 관리 앱");
-//[1] HTML 페이지의 특정 div 태그에 HTML 출력
-/*export */class HtmlResponse {
-    private constructor() {
-        // Empty
-    }
-    static divHtml: HTMLDivElement;
-    static write(html: string) {
-        HtmlResponse.divHtml.innerHTML = html; 
-    }
-}
-//[2] 구독자 수 관리에 필요한 기능
-/*export */class SubscriberCounter {
-    // 필드
-    private _count = 7000; 
-    // 생성자
-    constructor(public title: string) {
-    }
-    // 속성
-    get count() {
-        return this._count; 
-    }
-    set count(value: number) {
-        this._count = value; 
-    }
-    // 메서드
-    increment(cnt: number) {
-        this._count += cnt; 
-    }
-    decrement(cnt: number) {
-        this._count -= cnt;
-    }
-    update(cnt: number) {
-        this._count = cnt;
-    }
-}
+
+// 삼중 슬래시 참조, 삼중 슬래시 지시문
+/// <reference path="ChangeType.ts" />
+/// <reference path="HtmlResponse.ts" />
+/// <reference path="SubscriberCounter.ts" />
+
+//import { ChangeType } from './ChangeType';
+//import { HtmlResponse } from './HtmlResponse';
+
 //[!] 실행
 class Root {
     private title: string = "Youtube";
@@ -55,8 +29,11 @@ class Root {
         HtmlResponse.write(html);
     }
     changeCounter(changeType: ChangeType) {
-        let txtAmount: HTMLInputElement = document.querySelector("#txtAmount");
-        let amount = +txtAmount.value;
+        let txtAmount: HTMLInputElement | null = document.querySelector("#txtAmount");
+        let amount = 0;
+        if (txtAmount !== null) {
+            amount = +txtAmount.value;
+        }
         if (changeType == ChangeType.Increment) {
             this.subscriberCounter.increment(amount); 
         }
@@ -69,7 +46,7 @@ class Root {
         this.renderCounter(); 
     }
 }
-enum ChangeType { Increment = 1, Update = 0, Decrement = -1 }
+
 HtmlResponse.divHtml = document.querySelector("#divHtml");
 const root = new Root(); // 자바스크립트 코드 실행
 (<any>window).root = root; 
