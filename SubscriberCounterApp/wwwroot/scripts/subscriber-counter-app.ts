@@ -4,6 +4,7 @@
 /// <reference path="ChangeType.ts" />
 /// <reference path="HtmlResponse.ts" />
 /// <reference path="SubscriberCounter.ts" />
+/// <reference path="HtmlWriter.ts" />
 
 //import { ChangeType } from './ChangeType';
 //import { HtmlResponse } from './HtmlResponse';
@@ -12,7 +13,7 @@
 class Root {
     private title: string = "Youtube";
     subscriberCounter: SubscriberCounter;
-    constructor() {
+    constructor(private writer: HtmlWriter) {
         this.subscriberCounter = new SubscriberCounter(this.title);
         this.renderCounter(); 
     }
@@ -26,7 +27,8 @@ class Root {
 <button onclick="window.root.changeCounter(-1)">감소</button>
 <button onclick="window.root.changeCounter(0)">수정</button>
 `;
-        HtmlResponse.write(html);
+        //HtmlResponse.write(html);
+        writer.write(html); 
     }
     changeCounter(changeType: ChangeType) {
         let txtAmount: HTMLInputElement | null = document.querySelector("#txtAmount");
@@ -47,6 +49,7 @@ class Root {
     }
 }
 
-HtmlResponse.divHtml = document.querySelector("#divHtml");
-const root = new Root(); // 자바스크립트 코드 실행
+let divHtml: HTMLDivElement | null = document.querySelector("#divHtml");
+const writer: HtmlWriter = new HtmlWriter(divHtml);
+const root = new Root(writer); // 자바스크립트 코드 실행
 (<any>window).root = root; 
