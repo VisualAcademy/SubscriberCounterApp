@@ -26,6 +26,7 @@ var Root = /** @class */ (function () {
             title: '블로그 카운터',
             count: 40000
         });
+        this.subscriberCounter = this.youtubeCounter;
         var html = "";
         var counterList = new CounterList();
         counterList.add(this.youtubeCounter);
@@ -35,35 +36,46 @@ var Root = /** @class */ (function () {
         });
         this.writer.write(html);
     }
-    Root.prototype.renderCounter = function () {
-        //        const html = `
-        //<h2>${this.title} 구독자 카운트</h2>
-        //<span>채널 이름: </span> ${this.subscriberCounter.title}<br /> 
-        //<span>구독자 수: </span> ${this.subscriberCounter.count}<hr /> 
-        //변경 값: <input type="text" id="txtAmount" value="0"> 
-        //<button onclick="window.root.changeCounter(+1)">증가</button>
-        //<button onclick="window.root.changeCounter(-1)">감소</button>
-        //<button onclick="window.root.changeCounter(0)">수정</button>
-        //`;
-        //        //HtmlResponse.write(html);
-        //        writer.write(html); 
+    Root.prototype.togglePage = function (page) {
+        switch (page) {
+            case 'Youtube':
+                this.subscriberCounter = this.youtubeCounter;
+                break;
+            case 'Blog':
+                this.subscriberCounter = this.blogCounter;
+                break;
+        }
+        this.renderCounter(this.subscriberCounter);
+    };
+    Root.prototype.renderCounter = function (counter) {
+        var html = "\n<h2>" + counter.title + " \uAD6C\uB3C5\uC790 \uCE74\uC6B4\uD2B8</h2>\n<span>\uCC44\uB110 \uC774\uB984: </span> " + counter.title + "<br /> \n<span>\uAD6C\uB3C5\uC790 \uC218: </span> " + counter.count + "<hr /> \n\uBCC0\uACBD \uAC12: <input type=\"text\" id=\"txtAmount\" value=\"0\"> \n<button onclick=\"window.root.changeCounter(+1)\">\uC99D\uAC00</button>\n<button onclick=\"window.root.changeCounter(-1)\">\uAC10\uC18C</button>\n<button onclick=\"window.root.changeCounter(0)\">\uC218\uC815</button>\n";
+        this.writer.write(html);
     };
     Root.prototype.changeCounter = function (changeType) {
-        //let txtAmount: HTMLInputElement | null = document.querySelector("#txtAmount");
-        //let amount = 0;
-        //if (txtAmount !== null) {
-        //    amount = +txtAmount.value;
-        //}
-        //if (changeType == ChangeType.Increment) {
-        //    this.subscriberCounter.increment(amount); 
-        //}
-        //else if (changeType == ChangeType.Decrement) {
-        //    this.subscriberCounter.decrement(amount); 
-        //}
-        //else {
-        //    this.subscriberCounter.update(amount); 
-        //}
-        //this.renderCounter(); 
+        var txtAmount = document.querySelector("#txtAmount");
+        var amount = 0;
+        if (txtAmount !== null) {
+            amount = +txtAmount.value;
+        }
+        var err;
+        try {
+            if (changeType == ChangeType.Increment) {
+                this.subscriberCounter.increment(amount);
+            }
+            else if (changeType == ChangeType.Decrement) {
+                this.subscriberCounter.decrement(amount);
+            }
+            else {
+                this.subscriberCounter.update(amount);
+            }
+        }
+        catch (e) {
+            err = e;
+        }
+        this.renderCounter(this.subscriberCounter);
+        if (err) {
+            this.writer.writeLog(err.message);
+        }
     };
     return Root;
 }());
