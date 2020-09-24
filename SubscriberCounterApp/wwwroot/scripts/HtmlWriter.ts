@@ -10,4 +10,9 @@
             this.divHtml.innerHTML = html;
         }
     }
+    writeLog(html: string) {
+        if (this.divHtml !== null) {
+            this.divHtml.innerHTML += `<hr />${html}`;
+        }
+    }
 }

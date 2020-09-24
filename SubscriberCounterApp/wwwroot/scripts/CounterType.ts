@@ -1,0 +1,4 @@
+﻿enum CounterType {
+    Youtube,
+    Blog
+}

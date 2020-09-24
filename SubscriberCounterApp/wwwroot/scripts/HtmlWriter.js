@@ -12,5 +12,10 @@
             this.divHtml.innerHTML = html;
         }
     };
+    HtmlWriter.prototype.writeLog = function (html) {
+        if (this.divHtml !== null) {
+            this.divHtml.innerHTML += "<hr />" + html;
+        }
+    };
     return HtmlWriter;
 }());
