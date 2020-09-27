@@ -30,9 +30,19 @@ class Root {
         this.blogCounter = new BlogCounter({
             id: 2,
             title: '블로그 카운터',
-            count: 40000,
+            count: 20000,
             postCount: 5
         });
+        this.subscriberCounter = this.youtubeCounter;
+    }
+
+    // fetch() 함수와 async/await를 사용하려면 lib: "ES2015", "DOM" 추가 필요
+    async initializeCountsAsync() {
+        const response = await fetch("/counters.json");
+        const counters = await response.json();
+
+        this.youtubeCounter = new YoutubeCounter({ ...counters.youtubeCounter });
+        this.blogCounter = new BlogCounter({ ...counters.blogCounter });
         this.subscriberCounter = this.youtubeCounter;
 
         let html: string = "";
@@ -106,4 +116,5 @@ ${startYear}년: ${siteUrl}
 let divHtml: HTMLDivElement | null = document.querySelector("#divHtml");
 const writer: HtmlWriter = new HtmlWriter(divHtml);
 const root = new Root(writer); // 자바스크립트 코드 실행
+root.initializeCountsAsync(); // Web API로부터 JSON 데이터 받아 출력
 (<any>window).root = root; 
