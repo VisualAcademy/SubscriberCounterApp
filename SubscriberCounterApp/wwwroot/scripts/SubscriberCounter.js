@@ -5,6 +5,7 @@ var SubscriberCounter = /** @class */ (function () {
     // 생성자
     function SubscriberCounter(counterSettings) {
         // 필드
+        //_count = 7000;
         this._count = 7000;
         this.id = counterSettings.id;
         this.title = counterSettings.title;

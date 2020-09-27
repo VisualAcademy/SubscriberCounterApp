@@ -3,6 +3,7 @@
 //[2] 구독자 수 관리에 필요한 기능의 부모 클래스
 abstract class SubscriberCounter {
     // 필드
+    //_count = 7000;
     private _count = 7000;
     id: number;
     title: string;

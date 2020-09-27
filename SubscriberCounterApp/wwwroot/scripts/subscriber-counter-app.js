@@ -24,7 +24,8 @@ var Root = /** @class */ (function () {
         this.blogCounter = new BlogCounter({
             id: 2,
             title: '블로그 카운터',
-            count: 40000
+            count: 40000,
+            postCount: 5
         });
         this.subscriberCounter = this.youtubeCounter;
         var html = "";
