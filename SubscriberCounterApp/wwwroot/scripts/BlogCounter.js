@@ -43,7 +43,7 @@ var BlogCounter = /** @class */ (function (_super) {
     //    }
     //}
     BlogCounter.prototype.increment = function (cnt) {
-        if (this.postCount > 0) {
+        if (this.postCount !== undefined && this.postCount > 0) {
             _super.prototype.increment.call(this, cnt * this.postCount); // 부모 메서드로 전달
         }
         else {

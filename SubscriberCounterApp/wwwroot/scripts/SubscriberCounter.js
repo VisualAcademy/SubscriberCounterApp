@@ -1,5 +1,6 @@
 "use strict";
 /// <reference path="CounterType.ts" />
+/// <reference path="_Models.ts" />
 //[2] 구독자 수 관리에 필요한 기능의 부모 클래스
 var SubscriberCounter = /** @class */ (function () {
     // 생성자

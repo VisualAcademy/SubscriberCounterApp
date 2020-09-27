@@ -1,7 +1,8 @@
 ﻿/// <reference path="CounterType.ts" />
+/// <reference path="_Models.ts" />
 
 //[2] 구독자 수 관리에 필요한 기능의 부모 클래스
-abstract class SubscriberCounter {
+abstract class SubscriberCounter implements ICounterBase {
     // 필드
     //_count = 7000;
     private _count = 7000;
@@ -11,7 +12,7 @@ abstract class SubscriberCounter {
     //abstract getCounterInfo(): any; 
     abstract getCounterInfo(): ICounterInfo<number, string>; 
     // 생성자
-    constructor(counterSettings: any) {
+    constructor(counterSettings: ICounterSettings) {
         this.id = counterSettings.id;
         this.title = counterSettings.title; 
         this._count = counterSettings.count;
@@ -29,13 +30,13 @@ abstract class SubscriberCounter {
         }
     }
     // 메서드
-    increment(cnt: number) {
+    increment(cnt: number): void {
         this._count += cnt;
     }
-    decrement(cnt: number) {
+    decrement(cnt: number): void {
         this._count -= cnt;
     }
-    update(cnt: number) {
+    update(cnt: number): void {
         this._count = cnt;
     }
 }

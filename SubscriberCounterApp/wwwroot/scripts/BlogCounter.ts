@@ -7,8 +7,8 @@ class BlogCounter extends SubscriberCounter {
     private _startYear: number;
     private _siteUrl: string;
     counterType: CounterType = CounterType.Blog;
-    postCount: number = 0; 
-    constructor(counterSettings: any) {
+    postCount?: number = 0; 
+    constructor(counterSettings: ICounterSettings) {
         super(counterSettings); // 부모의 생성자에 매개 변수 전달
         this.postCount = counterSettings.postCount;
         this._startYear = Constants.Blog.START_YEAR;
@@ -30,7 +30,7 @@ class BlogCounter extends SubscriberCounter {
     //    }
     //}
     increment(cnt: number) {
-        if (this.postCount > 0) {
+        if (this.postCount !== undefined && this.postCount > 0) {
             super.increment(cnt * this.postCount); // 부모 메서드로 전달
         }
         else {
