@@ -1,6 +1,7 @@
 ﻿/// <reference path="SubscriberCounter.ts" />
+import { SubscriberCounter } from './SubscriberCounter';
 
-class CounterList {
+export class CounterList {
     private _counterList: SubscriberCounter[] = [];
 
     add(counter: SubscriberCounter) {

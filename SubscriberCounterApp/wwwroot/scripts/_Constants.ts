@@ -1,4 +1,4 @@
-﻿namespace Constants {
+﻿export namespace Constants {
     export class Youtube {
         static get SITE_URL(): string {
             return "https://youtube.com/c/VisualAcademy";

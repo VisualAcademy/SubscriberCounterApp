@@ -1,4 +1,4 @@
-﻿enum CounterType {
+﻿export enum CounterType {
     Youtube,
     Blog
 }

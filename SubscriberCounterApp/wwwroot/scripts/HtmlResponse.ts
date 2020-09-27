@@ -1,5 +1,5 @@
 ﻿//[1] HTML 페이지의 특정 div 태그에 HTML 출력
-/*export*/ class HtmlResponse {
+export class HtmlResponse {
     private constructor() {
         // Empty
     }

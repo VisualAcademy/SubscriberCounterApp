@@ -1,24 +1,20 @@
-﻿/// <reference path="CounterType.ts" />
+/// <reference path="CounterType.ts" />
 /// <reference path="SubscriberCounter.ts" />
 /// <reference path="_Constants.ts" />
 /// <reference path="_Models.ts" />
 import { CounterType } from "./CounterType";
 import { SubscriberCounter } from './SubscriberCounter';
 import { Constants } from "./_Constants";
-import { ICounterSettings, ICounterInfo, ICounterBase, IIncrementDecrementUpdate } from "./_Models";
-
 export class BlogCounter extends SubscriberCounter {
-    private _startYear: number;
-    private _siteUrl: string;
-    counterType: CounterType = CounterType.Blog;
-    postCount?: number = 0; 
-    constructor(counterSettings: ICounterSettings) {
+    constructor(counterSettings) {
         super(counterSettings); // 부모의 생성자에 매개 변수 전달
+        this.counterType = CounterType.Blog;
+        this.postCount = 0;
         this.postCount = counterSettings.postCount;
         this._startYear = Constants.Blog.START_YEAR;
         this._siteUrl = Constants.Blog.SITE_URL;
     }
-    getCounterInfo(): ICounterInfo<number, string> {
+    getCounterInfo() {
         return {
             startYear: this._startYear,
             siteUrl: this._siteUrl
@@ -33,12 +29,12 @@ export class BlogCounter extends SubscriberCounter {
     //        this._count += cnt;
     //    }
     //}
-    increment(cnt: number) {
+    increment(cnt) {
         if (this.postCount !== undefined && this.postCount > 0) {
             super.increment(cnt * this.postCount); // 부모 메서드로 전달
         }
         else {
-            super.increment(cnt); 
+            super.increment(cnt);
         }
     }
 }
