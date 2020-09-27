@@ -1,6 +1,7 @@
 "use strict";
 /// <reference path="CounterType.ts" />
 /// <reference path="SubscriberCounter.ts" />
+/// <reference path="_Constants.ts" />
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -21,10 +22,15 @@ var BlogCounter = /** @class */ (function (_super) {
         _this.counterType = CounterType.Blog;
         _this.postCount = 0;
         _this.postCount = counterSettings.postCount;
+        _this._siteYear = Constants.Blog.START_YEAR;
+        _this._siteUrl = Constants.Blog.SITE_URL;
         return _this;
     }
     BlogCounter.prototype.getCounterInfo = function () {
-        return {};
+        return {
+            siteYear: this._siteYear,
+            siteUrl: this._siteUrl
+        };
     };
     // 다시 정의(Override)
     //increment(cnt: number) {

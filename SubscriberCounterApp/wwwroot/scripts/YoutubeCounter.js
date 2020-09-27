@@ -1,6 +1,7 @@
 "use strict";
 /// <reference path="CounterType.ts" />
 /// <reference path="SubscriberCounter.ts" />
+/// <reference path="_Constants.ts" />
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -16,13 +17,18 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var YoutubeCounter = /** @class */ (function (_super) {
     __extends(YoutubeCounter, _super);
-    function YoutubeCounter() {
-        var _this = _super !== null && _super.apply(this, arguments) || this;
+    function YoutubeCounter(counterSettings) {
+        var _this = _super.call(this, counterSettings) || this;
         _this.counterType = CounterType.Youtube;
+        _this._siteYear = Constants.Youtube.START_YEAR;
+        _this._siteUrl = Constants.Youtube.SITE_URL;
         return _this;
     }
     YoutubeCounter.prototype.getCounterInfo = function () {
-        return {};
+        return {
+            siteYear: this._siteYear,
+            siteUrl: this._siteUrl
+        };
     };
     return YoutubeCounter;
 }(SubscriberCounter));

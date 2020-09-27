@@ -9,6 +9,7 @@
 /// <reference path="YoutubeCounter.ts" />
 /// <reference path="CounterType.ts" />
 /// <reference path="CounterList.ts" />
+/// <reference path="_Constants.ts" />
 
 //import { ChangeType } from './ChangeType';
 //import { HtmlResponse } from './HtmlResponse';
@@ -61,6 +62,8 @@ class Root {
 <h2>${counter.title} 구독자 카운트</h2>
 <span>채널 이름: </span> ${counter.title}<br /> 
 <span>구독자 수: </span> ${counter.count}<hr /> 
+${counter.getCounterInfo().siteYear}년: ${counter.getCounterInfo().siteUrl}
+<hr /> 
 변경 값: <input type="text" id="txtAmount" value="0"> 
 <button onclick="window.root.changeCounter(+1)">증가</button>
 <button onclick="window.root.changeCounter(-1)">감소</button>
