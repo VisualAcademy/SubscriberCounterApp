@@ -25,7 +25,7 @@ class BlogCounter extends SubscriberCounter {
     //        this._count += (cnt * this.postCount); // 학습 목적상 포스트 수만큼 곱해서 증가
     //    }
     //    else {
-    //        this._count = cnt;
+    //        this._count += cnt;
     //    }
     //}
     increment(cnt: number) {
