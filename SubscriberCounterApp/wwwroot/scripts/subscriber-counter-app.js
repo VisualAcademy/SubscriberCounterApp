@@ -10,6 +10,7 @@
 /// <reference path="CounterType.ts" />
 /// <reference path="CounterList.ts" />
 /// <reference path="_Constants.ts" />
+/// <reference path="_Models.ts" />
 //import { ChangeType } from './ChangeType';
 //import { HtmlResponse } from './HtmlResponse';
 //[!] 실행
@@ -50,7 +51,9 @@ var Root = /** @class */ (function () {
         this.renderCounter(this.subscriberCounter);
     };
     Root.prototype.renderCounter = function (counter) {
-        var html = "\n<h2>" + counter.title + " \uAD6C\uB3C5\uC790 \uCE74\uC6B4\uD2B8</h2>\n<span>\uCC44\uB110 \uC774\uB984: </span> " + counter.title + "<br /> \n<span>\uAD6C\uB3C5\uC790 \uC218: </span> " + counter.count + "<hr /> \n" + counter.getCounterInfo().startYear + "\uB144: " + counter.getCounterInfo().siteUrl + "\n<hr /> \n\uBCC0\uACBD \uAC12: <input type=\"text\" id=\"txtAmount\" value=\"0\"> \n<button onclick=\"window.root.changeCounter(+1)\">\uC99D\uAC00</button>\n<button onclick=\"window.root.changeCounter(-1)\">\uAC10\uC18C</button>\n<button onclick=\"window.root.changeCounter(0)\">\uC218\uC815</button>\n";
+        // 구조 파괴(분해) 할당
+        var _a = counter.getCounterInfo(), startYear = _a.startYear, siteUrl = _a.siteUrl;
+        var html = "\n<h2>" + counter.title + " \uAD6C\uB3C5\uC790 \uCE74\uC6B4\uD2B8</h2>\n<span>\uCC44\uB110 \uC774\uB984: </span> " + counter.title + "<br /> \n<span>\uAD6C\uB3C5\uC790 \uC218: </span> " + counter.count + "<hr /> \n" + startYear + "\uB144: " + siteUrl + "\n<hr /> \n\uBCC0\uACBD \uAC12: <input type=\"text\" id=\"txtAmount\" value=\"0\"> \n<button onclick=\"window.root.changeCounter(+1)\">\uC99D\uAC00</button>\n<button onclick=\"window.root.changeCounter(-1)\">\uAC10\uC18C</button>\n<button onclick=\"window.root.changeCounter(0)\">\uC218\uC815</button>\n";
         this.writer.write(html);
     };
     Root.prototype.changeCounter = function (changeType) {

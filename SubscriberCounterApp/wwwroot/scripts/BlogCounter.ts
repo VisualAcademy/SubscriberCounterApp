@@ -1,6 +1,7 @@
 ﻿/// <reference path="CounterType.ts" />
 /// <reference path="SubscriberCounter.ts" />
 /// <reference path="_Constants.ts" />
+/// <reference path="_Models.ts" />
 
 class BlogCounter extends SubscriberCounter {
     private _startYear: number;
@@ -13,7 +14,7 @@ class BlogCounter extends SubscriberCounter {
         this._startYear = Constants.Blog.START_YEAR;
         this._siteUrl = Constants.Blog.SITE_URL;
     }
-    getCounterInfo() {
+    getCounterInfo(): ICounterInfo<number, string> {
         return {
             startYear: this._startYear,
             siteUrl: this._siteUrl

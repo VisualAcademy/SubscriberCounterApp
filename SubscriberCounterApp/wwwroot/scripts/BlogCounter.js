@@ -2,6 +2,7 @@
 /// <reference path="CounterType.ts" />
 /// <reference path="SubscriberCounter.ts" />
 /// <reference path="_Constants.ts" />
+/// <reference path="_Models.ts" />
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||

@@ -8,7 +8,8 @@ abstract class SubscriberCounter {
     id: number;
     title: string;
     abstract counterType: CounterType; 
-    abstract getCounterInfo(): any; 
+    //abstract getCounterInfo(): any; 
+    abstract getCounterInfo(): ICounterInfo<number, string>; 
     // 생성자
     constructor(counterSettings: any) {
         this.id = counterSettings.id;

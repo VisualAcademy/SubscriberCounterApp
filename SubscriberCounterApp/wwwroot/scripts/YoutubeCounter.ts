@@ -1,6 +1,7 @@
 ﻿/// <reference path="CounterType.ts" />
 /// <reference path="SubscriberCounter.ts" />
 /// <reference path="_Constants.ts" />
+/// <reference path="_Models.ts" />
 
 class YoutubeCounter extends SubscriberCounter {
     private _startYear: number;
@@ -11,7 +12,7 @@ class YoutubeCounter extends SubscriberCounter {
         this._startYear = Constants.Youtube.START_YEAR;
         this._siteUrl = Constants.Youtube.SITE_URL;
     }
-    getCounterInfo() {
+    getCounterInfo(): ICounterInfo<number, string> {
         return {
             startYear: this._startYear,
             siteUrl: this._siteUrl

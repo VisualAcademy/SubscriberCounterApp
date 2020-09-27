@@ -10,6 +10,7 @@
 /// <reference path="CounterType.ts" />
 /// <reference path="CounterList.ts" />
 /// <reference path="_Constants.ts" />
+/// <reference path="_Models.ts" />
 
 //import { ChangeType } from './ChangeType';
 //import { HtmlResponse } from './HtmlResponse';
@@ -58,11 +59,14 @@ class Root {
     }
 
     renderCounter(counter: SubscriberCounter) {
+        // 구조 파괴(분해) 할당
+        const { startYear, siteUrl } = counter.getCounterInfo();
+
         const html = `
 <h2>${counter.title} 구독자 카운트</h2>
 <span>채널 이름: </span> ${counter.title}<br /> 
 <span>구독자 수: </span> ${counter.count}<hr /> 
-${counter.getCounterInfo().startYear}년: ${counter.getCounterInfo().siteUrl}
+${startYear}년: ${siteUrl}
 <hr /> 
 변경 값: <input type="text" id="txtAmount" value="0"> 
 <button onclick="window.root.changeCounter(+1)">증가</button>
