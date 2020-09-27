@@ -3,19 +3,19 @@
 /// <reference path="_Constants.ts" />
 
 class BlogCounter extends SubscriberCounter {
-    private _siteYear: number;
+    private _startYear: number;
     private _siteUrl: string;
     counterType: CounterType = CounterType.Blog;
     postCount: number = 0; 
     constructor(counterSettings: any) {
         super(counterSettings); // 부모의 생성자에 매개 변수 전달
         this.postCount = counterSettings.postCount;
-        this._siteYear = Constants.Blog.START_YEAR;
+        this._startYear = Constants.Blog.START_YEAR;
         this._siteUrl = Constants.Blog.SITE_URL;
     }
     getCounterInfo() {
         return {
-            siteYear: this._siteYear,
+            startYear: this._startYear,
             siteUrl: this._siteUrl
         };
     }

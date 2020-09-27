@@ -22,13 +22,13 @@ var BlogCounter = /** @class */ (function (_super) {
         _this.counterType = CounterType.Blog;
         _this.postCount = 0;
         _this.postCount = counterSettings.postCount;
-        _this._siteYear = Constants.Blog.START_YEAR;
+        _this._startYear = Constants.Blog.START_YEAR;
         _this._siteUrl = Constants.Blog.SITE_URL;
         return _this;
     }
     BlogCounter.prototype.getCounterInfo = function () {
         return {
-            siteYear: this._siteYear,
+            startYear: this._startYear,
             siteUrl: this._siteUrl
         };
     };
@@ -38,7 +38,7 @@ var BlogCounter = /** @class */ (function (_super) {
     //        this._count += (cnt * this.postCount); // 학습 목적상 포스트 수만큼 곱해서 증가
     //    }
     //    else {
-    //        this._count = cnt;
+    //        this._count += cnt;
     //    }
     //}
     BlogCounter.prototype.increment = function (cnt) {

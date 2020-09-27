@@ -20,13 +20,13 @@ var YoutubeCounter = /** @class */ (function (_super) {
     function YoutubeCounter(counterSettings) {
         var _this = _super.call(this, counterSettings) || this;
         _this.counterType = CounterType.Youtube;
-        _this._siteYear = Constants.Youtube.START_YEAR;
+        _this._startYear = Constants.Youtube.START_YEAR;
         _this._siteUrl = Constants.Youtube.SITE_URL;
         return _this;
     }
     YoutubeCounter.prototype.getCounterInfo = function () {
         return {
-            siteYear: this._siteYear,
+            startYear: this._startYear,
             siteUrl: this._siteUrl
         };
     };
