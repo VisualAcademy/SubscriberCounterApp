@@ -1,11 +1,14 @@
-export class CounterList {
-    constructor() {
+var CounterList = /** @class */ (function () {
+    function CounterList() {
         this._counterList = [];
     }
-    add(counter) {
+    CounterList.prototype.add = function (counter) {
         this._counterList.push(counter);
-    }
-    getAll() {
+    };
+    CounterList.prototype.getAll = function () {
         return this._counterList;
-    }
-}
+    };
+    return CounterList;
+}());
+export { CounterList };
+//# sourceMappingURL=CounterList.js.map
